@@ -11,8 +11,7 @@ https://github.com/jmalarcon/jquery.pan
 
 jQuery.fn.extend({
 
-	pan: function () {
-
+	pan: function (options) {
 		var panWrapper = document.createElement('div');
 		$(panWrapper).addClass("panWrapper");
 
@@ -59,7 +58,8 @@ jQuery.fn.extend({
 			if (big == undefined) 
 				big = t.attr("src");
 			$(".panWrapper").show();
-			$(".panWrapper img.i").css("width", "auto").attr("src", big).on('load', function () { panInit(e); });
+			var width = options.width ? options.width : 'auto';
+			$(".panWrapper img.i").css("width", width).attr("src", big).on('load', function () { panInit(e); });
 			return false;
 		});
 
